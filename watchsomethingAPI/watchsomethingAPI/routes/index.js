@@ -8,7 +8,10 @@ router.get('/', function(req, res, next) {
 });
 
 /* ROUTE TO GET ALL MOVIES */
-router.get('/getallmovies', db.getAllMovies);
+router.get('/getAllMovies', db.getAllMovies);
+
+/* ROUTE TO ADD MOVIES */
+router.get('/addMovies', db.addMovies);
 
 
 
