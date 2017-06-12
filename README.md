@@ -26,10 +26,10 @@ and results from an Amazon Product API call. The Amazon component will show the 
 ### Wireframes
 
 ### User Stories
-1 As a user I want to be presented with three choices of movies to watch when I don't know what I want to watch.
-2 Then, I want be able to select the type's of movies I want to be presented with by selecting a genre and year. 
-3 When I select the movie that I want to watch, I want to see the movie details 
-3 Then I want to be linked to Amazon Video to watch it.
+1. As a user I want to be presented with three choices of movies to watch when I don't know what I want to watch.
+2. Then, I want be able to select the type's of movies I want to be presented with by selecting a genre and year. 
+3. When I select the movie that I want to watch, I want to see the movie details 
+3. Then I want to be linked to Amazon Video to watch it.
 
 ### Download and Install
 
