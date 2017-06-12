@@ -1,6 +1,6 @@
 # Watch Something
 
-![Watch Somtething](http://i.imgur.com/wujRn0d.jpg)
+![Watch Somtething](https://i.imgur.com/wujRn0d.jpg)
 
 Watch Something presents a user with 3 random movie options. The user 
 can select their choice of movie genre and decade and is presented with 3 other random choices 
