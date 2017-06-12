@@ -23,6 +23,8 @@ and results from an Amazon Product API call. The Amazon component will show the 
 
 ### Node Modules
 
+### CRUD functionality
+
 ### Wireframes
 
 ### User Stories
