@@ -2,23 +2,55 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
 }
-
-.App-intro {
-  font-size: large;
+/* NAV */
+#navComponent {
+  border:solid red 1px;
+  width:75%;
+  margin:0 auto;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* MOVIE COMPONENT */
+#movieComponent {
+  border:solid green 1px;
+  width:75%;
+  height:300px;
+  margin:0 auto;
+}
+#movieResults {
+  border: solid black 1px;
+  width:85%;
+  margin: 0 auto;
+}
+#movieContainer {
+  border:solid yellow 1px;
+  height:300px;
+  width:200px;
+  margin:0 auto;
+}
+.imageContainer {
+  height: 250px;
+  border:solid black 1px;
+}
+/* SELECTED MOVIE PAGE */
+#selectedMoviePage {
+  border:solid blue 1px;
+  width:75%;
+  margin:0 auto;
+  margin-bottom: 25px;
+}
+#movieAndDescription {
+  border:solid red 1px;
+  height:300px;
+}
+#amazonResults {
+  border:solid black 1px;
+  height:150px;
+  width:80%;
+  margin: 0 auto;
 }
