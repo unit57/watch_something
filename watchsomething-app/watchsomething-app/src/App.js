@@ -23,9 +23,9 @@ class App extends Component {
           	</nav>
           </div>
 
-          <div id="movieComponent"> 
+          <div className="movieContainerComponent tempBorder"> 
           	<div id="movieResults">
-	          	<div id="movieContainer">
+	          	<div id="renderMovieComponent">
 	          		<div className="imageContainer">
 	          			<img src="#"></img>
 	          	</div>
@@ -34,18 +34,28 @@ class App extends Component {
 	         </div>
           </div>
    
-          <div id="selectedMoviePage">
+          <div className="selectedMoviePage tempBorder">
           		<div id="movieAndDescription">
           			<img src="#"></img>
           			<p>title</p>
           			<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis eveniet pariatur illo alias non, voluptatem natus quo, obcaecati ipsum numquam doloremque doloribus assumenda, dicta sapiente atque eligendi odio, itaque officiis!</p>
-          		</div>
-          	<div id="amazonResults">
-          	 AMAZON RESULTS HERE
+          		
+	          	<div id="amazonResults">
+	          	 AMAZON RESULTS HERE
+	          	</div>
           	</div>
 
-
           </div>
+ 			<div className="aboutComponent tempBorder">
+	          	<div> ABOUT <br />
+	          	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae adipisci quae reprehenderit rem et totam voluptatibus, exercitationem fugiat. Laborum a ex eveniet. Ab commodi magni odio repudiandae eius quas quia!
+	          	</div>
+         	</div>
+         	<div className="footerComponent tempBorder">
+	          	<div> footer <br />
+	          	</div>
+         	</div>
+         
 
        
       </div>
