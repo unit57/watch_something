@@ -9,7 +9,7 @@ import Nav from "./components/nav"
 import MovieChoices from "./components/movieChoices"
 import SelectedMoviePage from "./components/selectedMoviePage"
 import About from "./components/about"
-import Footer from "./components/about"
+import Footer from "./components/footer"
 
 
 
@@ -18,12 +18,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <Title />
-          <Nav />
-          <MovieChoices />
-          <SelectedMoviePage />
-          <About />
-          <Footer />    
+         <Title />
+         <Nav />
+	       <Router>
+	           <div>
+	         	 <NavLink to="/">Home</NavLink>&nbsp;&nbsp;
+	         	 <NavLink to="/watchme">SELECTED RESULTS</NavLink>&nbsp;&nbsp;
+	         	 <NavLink to="/about">About</NavLink>&nbsp;&nbsp; 
+	           <Switch>
+	         	 <Route path='/' exact component={MovieChoices}></Route>
+	         	 <Route path='/watchme' exact component={SelectedMoviePage}></Route>
+	         	 <Route path='/about'  component={About}></Route>
+	           </Switch>
+	        </div>
+	      </Router> 
+          
+       <Footer /> 
+             
       </div>
     );
   }
