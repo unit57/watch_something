@@ -31,6 +31,7 @@
 }
 #movieResults {
   border: solid black 1px;
+  display:flex;
   margin: 0 auto;
 }
 #renderMovieComponent{
@@ -49,7 +50,7 @@
 }
 #movieAndDescription {
   border:solid red 1px;
-  height:400px;
+  height:100%;
 
 }
 #amazonResults {

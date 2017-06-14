@@ -15,7 +15,7 @@ class Nav extends Component {
           		<option> 2017 </option>
           		<option> 2016 </option>
           	</select>
-          	<button> submit </button>
+          	<button onClick={this.props.selectThree}> submit </button>
           	<button> random </button>
           	</nav>
       </div>
