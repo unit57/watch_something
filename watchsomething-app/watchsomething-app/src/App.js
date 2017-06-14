@@ -25,6 +25,7 @@ class App extends Component {
 
 		// bind
 		this.handleThreeMovieClick = this.handleThreeMovieClick.bind(this);
+		this.handleSelectMovieClick = this.handleSelectMovieClick.bind(this);
 	}
 /* Get 3 movies and pass 3 movie click to nav */
 	handleThreeMovieClick(genre, year) {
@@ -49,16 +50,26 @@ class App extends Component {
 		})
 	}
 	
-	handleSelectedMovieClick() {
+	handleSelectMovieClick(index) {
 		console.log('click')
+		this.setState({
+			selectedMovie: this.state.threeMovies[index]
+		})
+		console.log("~~~~~" + this.state.selectedMovie.title)
 	}
 	
 	/* Pass handleSelected movie to movieChoices for React Router */
 	movieChoicesComponent = () => {
 		return (
-		<MovieChoices selectMovie={this.handleSelectedMovieClick} />
+		<MovieChoices selectMovie={this.handleSelectMovieClick} threeMovies={this.state.threeMovies} />
 			)
-		}
+		};
+		/* Selected movie to selected movie component */
+	selectedMoviePage = () => {
+		return (
+			<SelectedMoviePage movie={this.state.selectedMovie} >
+			)
+		};
 	
 
 	

@@ -6,9 +6,14 @@ class MovieChoices extends Component {
     return (
 	   <div className="movieContainerComponent tempBorder"> 
 	      	<div id="movieResults">	
-	          	<Movie selectMovie={this.props.selectMovie}/>
-	          	<Movie />
-	          	<Movie />
+	      	{this.props.threeMovies.map((element, index) => {
+	      		return (
+	      			<Movie key={index} index={index} image={element.posterpath} title={element.title} year={element.year} overview={element.overview} buttonID={element.title} selectMovie={this.props.selectMovie} />
+	      			)
+	      	})}
+
+	      	
+	          
 	         </div>
 	    </div>
     );
