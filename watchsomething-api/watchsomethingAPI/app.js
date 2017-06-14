@@ -4,6 +4,9 @@ require('dotenv').config();
 // Using Express
 var express = require('express');
 
+// Cors
+var cors = require('cors')
+
 // Set up paths
 var path = require('path');
 
@@ -21,6 +24,9 @@ var users = require('./routes/users');
 
 // Use express Methods
 var app = express();
+
+// CORS
+app.use(cors());
 
 // View Engine Setup
 app.set('views', path.join(__dirname, 'views'));
