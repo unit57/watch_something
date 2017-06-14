@@ -28,17 +28,18 @@ class App extends Component {
 	}
 /* Get 3 movies and pass 3 movie click to nav */
 	handleThreeMovieClick(genre, year) {
-		console.log('e-----', genre.value)
-		console.log('e-----', year.value)
+		let selectedGenre = parseInt(genre.value);
+		let selectedYear = parseInt(year.value);
+		console.log(typeof(selectedYear), selectedGenre)
 		//randomize function use with data to mix up data
 		function randomize(a, b) {
 		    return Math.random() - 0.5;
 		}
 
-		console.log('this', this)
+		console.log('this', `https://ericproject4wsapi.herokuapp.com/getmovie/${selectedYear}/${selectedGenre}`)
 
 		/* hard code url, but I'll need to get params for search from options  and link to heroku address*/
-		axios.get("https://ericproject4wsapi.herokuapp.com/getmovie/"+ year.value +"/"+ genre.value)
+		axios.get(`https://ericproject4wsapi.herokuapp.com/getmovie/${selectedYear}/${selectedGenre}`)
 		.then((res) => {
 			const length = res.data.userSelect.sort(randomize).length;
 			let movieSplit = res.data.userSelect.sort(randomize).splice(length-3, 3)

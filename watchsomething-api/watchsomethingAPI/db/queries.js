@@ -86,7 +86,8 @@ function getOneMovie(req,res,next) {
 function getUserSelect(req, res, next){
 	let genreID = parseInt(req.params.genre);
 	let year = parseInt(req.params.year);
-	db.any(`SELECT * FROM movies WHERE year=${year} AND genre_id_1=${genreID} OR year=${year} AND genre_id_2=${genreID} OR year=${year} AND genre_id_3=${genreID}`)
+	db.any(`SELECT * FROM movies WHERE year>=${year} AND year<=${year + 10} AND genre_id_1=${genreID} OR year>=${year} AND year<=${year + 10} AND genre_id_2=${genreID} OR year>=${year} AND year<=${year + 10} AND genre_id_3=${genreID}`)
+	
 	.then((data) => { res.status(200).json({ userSelect: data}) })
 	.catch((err) => { return next(err); });
 }
