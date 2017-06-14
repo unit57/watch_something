@@ -22,13 +22,29 @@ class App extends Component {
 			threeMovies: [],
 			selectedMovie: []
 		}
+
+		// bind
+		this.handleThreeMovieClick = this.handleThreeMovieClick.bind(this);
 	}
-	/* Get 3 movies and pass 3 movie click to nav */
-	handleThreeMovieClick() {
+/* Get 3 movies and pass 3 movie click to nav */
+	handleThreeMovieClick(genre, year) {
+		console.log('e-----', genre.value)
+		console.log('e-----', year.value)
+		//randomize function use with data to mix up data
+		function randomize(a, b) {
+		    return Math.random() - 0.5;
+		}
+
+		console.log('this', this)
+
 		/* hard code url, but I'll need to get params for search from options  and link to heroku address*/
-		axios.get("https://ericproject4wsapi.herokuapp.com/getmovie/2017/16")
+		axios.get("https://ericproject4wsapi.herokuapp.com/getmovie/"+ year.value +"/"+ genre.value)
 		.then((res) => {
-			console.log(res.data.userSelect)
+			const length = res.data.userSelect.sort(randomize).length;
+			let movieSplit = res.data.userSelect.sort(randomize).splice(length-3, 3)
+			this.setState({
+				threeMovies: movieSplit
+			})
 		})
 	}
 	
@@ -49,7 +65,7 @@ class App extends Component {
     return (
       <div className="App">
          <Title />
-         <Nav selectThree={this.handleThreeMovieClick}/>
+         <Nav selectThree={(genre, year)=>this.handleThreeMovieClick(genre, year)}/>
 	       <Router>
 	           <div>
 	         	 <NavLink to="/">Home</NavLink>&nbsp;&nbsp;

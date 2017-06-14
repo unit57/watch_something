@@ -59,7 +59,7 @@ function addMovieGenres(req, res, next) {
 	const genreURL = "https://api.themoviedb.org/3/genre/movie/list?api_key=c164eb6c6f7dce7530f80aea43fe7bb8&language=en-US"
 	axios.get(genreURL) 
 	.then((res) => {
-		
+		let genre = res.data.genres
 /* trying to do a closure here I want to get this genre value out and use it in add movies */
 		genre.map((element, index) => {
 		db.none('INSERT INTO genres (genre_id, name)' + 'VALUES ($1, $2)',
