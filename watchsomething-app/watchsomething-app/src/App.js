@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 /* IMPORT COMPONENTS */
@@ -55,7 +55,11 @@ class App extends Component {
 		this.setState({
 			selectedMovie: this.state.threeMovies[index]
 		})
+		return <Redirect to="/watchme"/>;
+		/* redirect button to watch me route */
 		console.log("~~~~~" + this.state.selectedMovie.title)
+		/* after seting the state for selected movie page redirect*/
+		
 	}
 	
 	/* Pass handleSelected movie to movieChoices for React Router */
@@ -64,13 +68,13 @@ class App extends Component {
 		<MovieChoices selectMovie={this.handleSelectMovieClick} threeMovies={this.state.threeMovies} />
 			)
 		};
-		/* Selected movie to selected movie component */
-	selectedMoviePage = () => {
+	/* Selected movie to selected movie component */
+	selectedMoviePageComponent = () => {
 		return (
-			<SelectedMoviePage movie={this.state.selectedMovie} >
+			<SelectedMoviePage movie={this.state.selectedMovie} />
 			)
 		};
-	
+
 
 	
   render() {
@@ -84,7 +88,7 @@ class App extends Component {
 	         	 <NavLink to="/about">About</NavLink>&nbsp;&nbsp; 
 	           <Switch>
 	         	 <Route path='/' exact render={() => this.movieChoicesComponent()}></Route>
-	         	 <Route path='/watchme' exact component={SelectedMoviePage}></Route>
+	         	 <Route path='/watchme' exact render={() => this.selectedMoviePageComponent()}></Route>
 	         	 <Route path='/about'  component={About}></Route>
 	           </Switch>
 	        </div>

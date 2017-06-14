@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 
 class Movie extends Component {
@@ -10,8 +11,8 @@ class Movie extends Component {
 	  		</div>
 	  		<p>{this.props.title}</p>
 	  	{/*<p>{this.props.overview}</p>*/}
-	  		<button onClick={() => this.props.selectMovie(this.props.index)}> selectmovie </button>
-	  		<a href="/watchme"> Select </a>
+	  		<Link to="/watchme"><button onClick={() => this.props.selectMovie(this.props.index)}> selectmovie </button></Link>
+
   		</div>
     );
   }
