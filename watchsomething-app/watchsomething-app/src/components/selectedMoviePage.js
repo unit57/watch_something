@@ -10,7 +10,7 @@ class selectedMoviePage extends Component {
 	  			<p>{this.props.movie.overview}</p>
 	          	
 	          	<div id="amazonResults">
-	          	 AMAZON RESULTS HERE
+	          	 <a href={this.props.amazonMovie}>watch me on amazon</a>
 	          	</div>
           	
           	</div>

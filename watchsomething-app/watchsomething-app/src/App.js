@@ -20,7 +20,8 @@ class App extends Component {
 
 		this.state = {
 			threeMovies: [],
-			selectedMovie: []
+			selectedMovie: [],
+			amazonMovie:[]
 		}
 
 		// bind
@@ -51,9 +52,17 @@ class App extends Component {
 	}
 	
 	handleSelectMovieClick(index) {
-		console.log('click')
+		
 		this.setState({
 			selectedMovie: this.state.threeMovies[index]
+		})
+		axios.get(`https://ericproject4wsapi.herokuapp.com/getMovieLink/${this.state.threeMovies[index].title}`)
+		.then((res) => {
+			this.setState({
+				amazonMovie: res.data.things[0]
+			})
+
+			console.log(res.data.things[0])
 		})
 	}
 	
@@ -66,7 +75,7 @@ class App extends Component {
 	/* Selected movie to selected movie component */
 	selectedMoviePageComponent = () => {
 		return (
-			<SelectedMoviePage movie={this.state.selectedMovie} />
+			<SelectedMoviePage movie={this.state.selectedMovie} amazonMovie={this.state.amazonMovie}/>
 			)
 		};
 
