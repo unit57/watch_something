@@ -7,6 +7,15 @@ var pgp = require('pg-promise')(options);
 /* Cheerio */
 var cheerio = require('cheerio');
 
+/* AMAZON API */
+var amazon = require('amazon-product-api');
+/* Create Client */
+var client = amazon.createClient({
+  awsId: "AKIAIFALS5TTB5AGKMYQ",
+  awsSecret: "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",
+  awsTag: "unit57-20"
+});
+
 // SET UP THE DATABASE
 var connectionString = process.env.DATABASE_URL;
 var db = pgp(connectionString);
@@ -97,7 +106,7 @@ function getUserSelect(req, res, next){
 	.catch((err) => { return next(err); });
 }
  function getMovieLink(req, res, next) {
- 	amzURL = "http://webservices.amazon.com/onca/xml?AWSAccessKeyId=AKIAIFALS5TTB5AGKMYQ&AssociateTag=unit57-20&Keywords=back%20to%20the%20future&Operation=ItemSearch&ResponseGroup=Images%2CItemAttributes%2COffers&SearchIndex=Movies&Service=AWSECommerceService&Timestamp=2017-06-15T20%3A57%3A36.000Z&Signature=w9ouKnHYxea%2FznGV%2BUp57QBiGSS9AaFJRHeqfStO6Gk%3D"
+	/*amzURL = "http://webservices.amazon.com/onca/xml?AWSAccessKeyId=AKIAIFALS5TTB5AGKMYQ&AssociateTag=unit57-20&Keywords=back%20to%20the%20future&Operation=ItemSearch&ResponseGroup=Images%2CItemAttributes%2COffers&SearchIndex=Movies&Service=AWSECommerceService&Timestamp=2017-06-15T20%3A57%3A36.000Z&Signature=w9ouKnHYxea%2FznGV%2BUp57QBiGSS9AaFJRHeqfStO6Gk%3D"
  	 //amzURL = "http://localhost:3000/myxml"
  	axios.get(amzURL)
 		.then((res) => {
@@ -105,14 +114,25 @@ function getUserSelect(req, res, next){
     	$ = cheerio.load(res.data, {xmlMode: true});
 		console.log($('DetailPageURL').first().text())
 		let movieURL = $('DetailPageURL').first().text() 
-		// let x = {"stuff": `${movieURL}`}
 		return movieURL
 		})
-		// .then((movieURL) => { res.status(200).json({ movieURL: movieURL}) })
-		// console.log("~~~~~" + x)
 		.then((movieURL) => { res.json({ things: movieURL }) })
 		.catch((err) => { return next(err); });
- }
+		*/
+		let title = req.params.title
+		client.itemSearch({
+			  keywords: title,
+			  searchIndex: 'DVD',
+			  responseGroup: 'ItemAttributes,Offers,Images'
+			}).then(function(results){
+			  let movieURL = results[0].DetailPageURL;
+			  return movieURL
+			})
+			  .then((movieURL) => { res.json({ things: movieURL }) })
+			.catch(function(err){
+			  console.log(err);
+			});
+		}
 
 module.exports = {
 	addMovies: addMovies,

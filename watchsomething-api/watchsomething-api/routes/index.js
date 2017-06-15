@@ -25,12 +25,12 @@ router.get('/getMovieGenres', db.getMovieGenres);
 router.get('/addMovieGenres', db.addMovieGenres);
 
 /* GET AMAZON MOVIE LINK */
-// router.get('/getMovieLink/:title', db.getMovieLink);
+router.get('/getMovieLink/:title', db.getMovieLink);
 /* TEST FIRST WITH HARD CODED LINK */
-router.get('/getMovieLink', db.getMovieLink);
+/*router.get('/getMovieLink', db.getMovieLink);
 router.get('/myxml', function(req, res, next) {
 	res.sendFile(path.join(__dirname, '../', 'tester.xml'));
-});
+});*/
 
 
 module.exports = router;
