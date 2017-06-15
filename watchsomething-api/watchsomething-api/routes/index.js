@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../db/queries');
+var path = require('path');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -23,7 +24,13 @@ router.get('/getMovieGenres', db.getMovieGenres);
 /* ADD ALL MOVIE GENRES*/
 router.get('/addMovieGenres', db.addMovieGenres);
 
-
+/* GET AMAZON MOVIE LINK */
+// router.get('/getMovieLink/:title', db.getMovieLink);
+/* TEST FIRST WITH HARD CODED LINK */
+router.get('/getMovieLink', db.getMovieLink);
+router.get('/myxml', function(req, res, next) {
+	res.sendFile(path.join(__dirname, '../', 'tester.xml'));
+});
 
 
 module.exports = router;

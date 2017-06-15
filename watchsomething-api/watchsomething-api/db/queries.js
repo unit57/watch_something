@@ -2,6 +2,11 @@ var promise = require('bluebird');
 var options = { promiseLib: promise };
 var pgp = require('pg-promise')(options);
 
+//console.log(xmltest)
+
+/* Cheerio */
+var cheerio = require('cheerio');
+
 // SET UP THE DATABASE
 var connectionString = process.env.DATABASE_URL;
 var db = pgp(connectionString);
@@ -91,7 +96,23 @@ function getUserSelect(req, res, next){
 	.then((data) => { res.status(200).json({ userSelect: data}) })
 	.catch((err) => { return next(err); });
 }
-
+ function getMovieLink(req, res, next) {
+ 	amzURL = "http://webservices.amazon.com/onca/xml?AWSAccessKeyId=AKIAIFALS5TTB5AGKMYQ&AssociateTag=unit57-20&Keywords=back%20to%20the%20future&Operation=ItemSearch&ResponseGroup=Images%2CItemAttributes%2COffers&SearchIndex=Movies&Service=AWSECommerceService&Timestamp=2017-06-15T20%3A57%3A36.000Z&Signature=w9ouKnHYxea%2FznGV%2BUp57QBiGSS9AaFJRHeqfStO6Gk%3D"
+ 	 //amzURL = "http://localhost:3000/myxml"
+ 	axios.get(amzURL)
+		.then((res) => {
+			 //console.log(res.data)
+    	$ = cheerio.load(res.data, {xmlMode: true});
+		console.log($('DetailPageURL').first().text())
+		let movieURL = $('DetailPageURL').first().text() 
+		// let x = {"stuff": `${movieURL}`}
+		return movieURL
+		})
+		// .then((movieURL) => { res.status(200).json({ movieURL: movieURL}) })
+		// console.log("~~~~~" + x)
+		.then((movieURL) => { res.json({ things: movieURL }) })
+		.catch((err) => { return next(err); });
+ }
 
 module.exports = {
 	addMovies: addMovies,
@@ -100,6 +121,7 @@ module.exports = {
 	addMovieGenres: addMovieGenres,
 	getMovieGenres: getMovieGenres,
 	getUserSelect: getUserSelect,
+	getMovieLink: getMovieLink
 }
 
 

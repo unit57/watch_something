@@ -55,11 +55,6 @@ class App extends Component {
 		this.setState({
 			selectedMovie: this.state.threeMovies[index]
 		})
-		return <Redirect to="/watchme"/>;
-		/* redirect button to watch me route */
-		console.log("~~~~~" + this.state.selectedMovie.title)
-		/* after seting the state for selected movie page redirect*/
-		
 	}
 	
 	/* Pass handleSelected movie to movieChoices for React Router */
