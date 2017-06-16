@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, NavLink, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Switch, Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 
 /* IMPORT COMPONENTS */
@@ -21,7 +21,9 @@ class App extends Component {
 		this.state = {
 			threeMovies: [],
 			selectedMovie: [],
-			amazonMovie:[]
+			amazonMovie:[],
+			searchButtons: true,
+			aboutButton: true
 		}
 
 		// bind
@@ -46,11 +48,12 @@ class App extends Component {
 			const length = res.data.userSelect.sort(randomize).length;
 			let movieSplit = res.data.userSelect.sort(randomize).splice(length-3, 3)
 			this.setState({
-				threeMovies: movieSplit
+				threeMovies: movieSplit,
+				
 			})
 		})
 	}
-	
+	/* THREE MOVIES CLICK */
 	handleSelectMovieClick(index) {
 		
 		this.setState({
@@ -59,12 +62,35 @@ class App extends Component {
 		axios.get(`https://ericproject4wsapi.herokuapp.com/getMovieLink/${this.state.threeMovies[index].title}`)
 		.then((res) => {
 			this.setState({
-				amazonMovie: res.data.things[0]
+				amazonMovie: res.data.things[0],
+				searchButtons: false
 			})
 
 			console.log(res.data.things[0])
 		})
 	}
+	/* BACK BUTTON CLICK */
+	 handleBackButtonClick() {
+	 	this.setState({
+	 		searchButtons: true
+	 	})
+	 	
+	 }
+
+	 handleAboutClick() {
+	 	this.setState({
+	 		aboutButton: false
+	 	})
+
+	 }
+
+	 handleHomeClick() {
+	 	this.setState({
+	 		aboutButton: true
+	 	})
+
+
+	 }
 	
 	/* Pass handleSelected movie to movieChoices for React Router */
 	movieChoicesComponent = () => {
@@ -78,27 +104,56 @@ class App extends Component {
 			<SelectedMoviePage movie={this.state.selectedMovie} amazonMovie={this.state.amazonMovie}/>
 			)
 		};
-
+	
+	/* SEARCH BUTTONS*/
+	renderNavComponent = () => {
+		if(this.state.searchButtons === true){
+			return (
+				<Nav selectThree={(genre, year)=>this.handleThreeMovieClick(genre, year)} searchButtons={this.state.searchButtons}/>
+				)
+		}else{
+			return (
+			<div className="navComponent">
+				<Link to="/"><button onClick={()=>this.handleBackButtonClick()}>back</button> </Link>
+			</div>
+				)	
+	} }
+	/* ABOUT AND HOME TOGLE BUTTONS */
+	renderAboutHomeToggle = () => {
+		if(this.state.aboutButton === true ) {
+			return(
+			<Link to="/about"><button onClick={()=> this.handleAboutClick()}>About</button></Link>
+			)
+		} 
+			return(
+			<Link to="/"><button onClick={()=> this.handleHomeClick()}>Home</button></Link> 
+			)
+		}
 
 	
   render() {
     return (
       <div className="App">
          <Title />
-         <Nav selectThree={(genre, year)=>this.handleThreeMovieClick(genre, year)}/>
+         {/*<Nav selectThree={(genre, year)=>this.handleThreeMovieClick(genre, year)} searchButtons={this.state.searchButtons}/>*/}
+	     
+
 	       <Router>
 	           <div>
-	         	 <NavLink to="/">Home</NavLink>&nbsp;&nbsp;
-	         	 <NavLink to="/about">About</NavLink>&nbsp;&nbsp; 
+	         	 {this.renderNavComponent()} 
 	           <Switch>
 	         	 <Route path='/' exact render={() => this.movieChoicesComponent()}></Route>
 	         	 <Route path='/watchme' exact render={() => this.selectedMoviePageComponent()}></Route>
 	         	 <Route path='/about'  component={About}></Route>
 	           </Switch>
+	           <br />
+	          	{this.renderAboutHomeToggle()}   
 	        </div>
+
 	      </Router> 
-          
-       <Footer /> 
+    
+       
+       {/*<Footer />*/}
              
       </div>
     );

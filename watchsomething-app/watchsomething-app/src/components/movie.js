@@ -9,9 +9,10 @@ class Movie extends Component {
 	  		<div className="imageContainer">
 	  			<img src={this.props.image}></img>
 	  		</div>
-	  		<p>{this.props.title}</p>
-	  	{/*<p>{this.props.overview}</p>*/}
-	  		<Link to="/watchme"><button onClick={() => this.props.selectMovie(this.props.index)}> selectmovie </button></Link>
+	  		{/*<p>{this.props.title}</p>*/}
+	  		{/*<p>{this.props.overview}</p>*/}
+	  		<br />
+	  		<Link to="/watchme"><button onClick={() => this.props.selectMovie(this.props.index)}> Details </button></Link>
 
   		</div>
     );

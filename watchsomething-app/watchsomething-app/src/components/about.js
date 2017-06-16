@@ -7,6 +7,8 @@ class About extends Component {
 	      	<div> ABOUT <br />
 	      	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae adipisci quae reprehenderit rem et totam voluptatibus, exercitationem fugiat. Laborum a ex eveniet. Ab commodi magni odio repudiandae eius quas quia!
 	      	</div>
+	      	<a href="/"> watch something </a>
+
        </div>
     );
   }
