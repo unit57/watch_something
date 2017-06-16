@@ -7,6 +7,10 @@ can select their choice of movie genre and decade and is presented with 3 other 
 within their query parameters. When a user selects a movie they will be brought to a page with movie trailer, details 
 and results from an Amazon Product API call. The Amazon component will show the results from the Product API with viewing options.
 
+API - https://ericproject4wsapi.herokuapp.com
+APP - https://lit-cliffs-97185.herokuapp.com/
+
+
 ### Git Projects
 
 ### API's
