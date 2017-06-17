@@ -7,12 +7,12 @@ class Movie extends Component {
     return (
 	   <div id="renderMovieComponent">
 	  		<div className="imageContainer">
-	  			<img src={this.props.image}></img>
+	  			<Link to="/watchme"><img src={this.props.image} onClick={() => this.props.selectMovie(this.props.index)}></img></Link>
 	  		</div>
 	  		{/*<p>{this.props.title}</p>*/}
 	  		{/*<p>{this.props.overview}</p>*/}
 	  		<br />
-	  		<Link to="/watchme"><button onClick={() => this.props.selectMovie(this.props.index)}> Details </button></Link>
+	  		{/*<Link to="/watchme"><button className="button movieButton" onClick={() => this.props.selectMovie(this.props.index)}> Details </button></Link>*/}
 
   		</div>
     );

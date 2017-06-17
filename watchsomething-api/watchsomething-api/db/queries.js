@@ -122,7 +122,7 @@ function getUserSelect(req, res, next){
 		let title = req.params.title
 		client.itemSearch({
 			  keywords: title,
-			  searchIndex: 'DVD',
+			  searchIndex: 'Video',
 			  responseGroup: 'ItemAttributes,Offers,Images'
 			}).then(function(results){
 			  let movieURL = results[0].DetailPageURL;

@@ -23,7 +23,7 @@ class App extends Component {
 			selectedMovie: [],
 			amazonMovie:[],
 			searchButtons: true,
-			aboutButton: true
+			aboutButton: true,
 		}
 
 		// bind
@@ -63,7 +63,7 @@ class App extends Component {
 		.then((res) => {
 			this.setState({
 				amazonMovie: res.data.things[0],
-				searchButtons: false
+				searchButtons: false,
 			})
 
 			console.log(res.data.things[0])
@@ -100,9 +100,15 @@ class App extends Component {
 		};
 	/* Selected movie to selected movie component */
 	selectedMoviePageComponent = () => {
+		if(this.state.amazonMovie !== [] ){
+
 		return (
 			<SelectedMoviePage movie={this.state.selectedMovie} amazonMovie={this.state.amazonMovie}/>
 			)
+		} 
+			return (
+				<Redirect to="/" />
+				)
 		};
 	
 	/* SEARCH BUTTONS*/
@@ -114,7 +120,7 @@ class App extends Component {
 		}else{
 			return (
 			<div className="navComponent">
-				<Link to="/"><button onClick={()=>this.handleBackButtonClick()}>back</button> </Link>
+				<Link to="/"><button className="button" onClick={()=>this.handleBackButtonClick()}>Watch Something Else</button> </Link>
 			</div>
 				)	
 	} }
@@ -122,11 +128,11 @@ class App extends Component {
 	renderAboutHomeToggle = () => {
 		if(this.state.aboutButton === true ) {
 			return(
-			<Link to="/about"><button onClick={()=> this.handleAboutClick()}>About</button></Link>
+			<Link to="/about"><button className="button" onClick={()=> this.handleAboutClick()}>About</button></Link>
 			)
 		} 
 			return(
-			<Link to="/"><button onClick={()=> this.handleHomeClick()}>Home</button></Link> 
+			<Link to="/"><button className="button" onClick={()=> this.handleHomeClick()}>Home</button></Link> 
 			)
 		}
 
