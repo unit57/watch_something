@@ -9,11 +9,14 @@ class selectedMoviePage extends Component {
 	  				<img className="poster"src={this.props.movie.posterpath} height="" width=""></img>
 	  			</div>
 	  			<div id="selectedMovieDetails">
-		  			<p>{this.props.movie.title}</p>
+		  			<div id="selectedMovieTitle">{this.props.movie.title}</div>
 		  			<p>{this.props.movie.overview}</p>
-		  		<div id="amazonResults">
-	          	 	<a target="_blank" href={this.props.amazonMovie}>watch me on amazon</a>
-	          	</div>
+		  		<div id="amazonResultsDiv">
+		  			<div id="watchme"> watch me on </div>
+			  		<div id="amazonResults">
+		          	 	<a target="_blank" href={this.props.amazonMovie}><img id="amazonImage" src="http://i.imgur.com/OEgZxFQ.jpg" width="199px"/></a>	
+		          	</div>
+		  			</div>
 		  		</div>
 	          	
 	          	

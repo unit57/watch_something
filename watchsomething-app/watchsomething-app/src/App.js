@@ -34,7 +34,7 @@ class App extends Component {
 	handleThreeMovieClick(genre, year) {
 		let selectedGenre = parseInt(genre.value);
 		let selectedYear = parseInt(year.value);
-		console.log(typeof(selectedYear), selectedGenre)
+		// console.log(typeof(selectedYear), selectedGenre)
 		//randomize function use with data to mix up data
 		function randomize(a, b) {
 		    return Math.random() - 0.5;
@@ -53,7 +53,7 @@ class App extends Component {
 			})
 		})
 	}
-	/* THREE MOVIES CLICK */
+	/* SELECT MOVIES CLICK */
 	handleSelectMovieClick(index) {
 		
 		this.setState({

@@ -9,7 +9,8 @@ class Nav extends Component {
             <nav>
             <span>I want to watch &nbsp;</span>
             <select ref={(genre) => this.genre=genre}>
-              <option value="18"> a Drama Movie</option>
+              <option value="28"> an Action Movie  </option>
+              <option value="18"> a Drama </option>
               <option value="27"> a Horror Movie </option>
               <option value="10770"> a TV Movie </option>
               <option value="16"> an Animation </option>
@@ -23,7 +24,6 @@ class Nav extends Component {
               <option value="80"> a Crime Movie  </option>
               <option value="37"> a Western  </option>
               <option value="8"> a Family Movie </option>
-              <option value="28"> an Action Movie  </option>
               <option value="12"> Musical </option>
             </select>&nbsp;
            <span> from the &nbsp;</span>
