@@ -24,12 +24,17 @@ class App extends Component {
 			amazonMovie:[],
 			searchButtons: true,
 			aboutButton: true,
+			bgImageURL: 'url("http://i.imgur.com/QZI3Mz7.png")'
 		}
 
 		// bind
 		this.handleThreeMovieClick = this.handleThreeMovieClick.bind(this);
 		this.handleSelectMovieClick = this.handleSelectMovieClick.bind(this);
 	}
+
+
+
+
 /* Get 3 movies and pass 3 movie click to nav */
 	handleThreeMovieClick(genre, year) {
 		let selectedGenre = parseInt(genre.value);
@@ -49,6 +54,7 @@ class App extends Component {
 			let movieSplit = res.data.userSelect.sort(randomize).splice(length-3, 3)
 			this.setState({
 				threeMovies: movieSplit,
+				aboutButton:true
 				
 			})
 		})
@@ -72,7 +78,8 @@ class App extends Component {
 	/* BACK BUTTON CLICK */
 	 handleBackButtonClick() {
 	 	this.setState({
-	 		searchButtons: true
+	 		searchButtons: true,
+	 		aboutButton:true
 	 	})
 	 	
 	 }
@@ -120,7 +127,7 @@ class App extends Component {
 		}else{
 			return (
 			<div className="navComponent">
-				<Link to="/"><button className="button" onClick={()=>this.handleBackButtonClick()}>Watch Something Else</button> </Link>
+				<NavLink to="/"><button className="button" onClick={()=>this.handleBackButtonClick()}>Watch Something Else</button> </NavLink>
 			</div>
 				)	
 	} }

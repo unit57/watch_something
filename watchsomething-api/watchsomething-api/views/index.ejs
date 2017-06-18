@@ -5,18 +5,18 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-	
-	add movies to db: /addMovies <br /><br />
+    <h1>Watch Something API</h1>
+    
+	<div id="routes">
+	<!-- Add movies to  /addMovies <br /><br /> -->
+  <!-- Add movie genres /addMovieGenres -->
+	<p><span class="route"> Get All Movies:</span> /getAllMovies </p>
+	<p><span class="route">Get One Movie: </span>/getOneMovie/:id </p>
+	<p><span class="route">Get Movie Based on User Selection:</span> /getMovie/:year/:genre </p>
 
-	get all movies: /getAllMovies <br /><br />
-	get one movie: /getOneMovie/:id <br /><br />
-	get movie based on user selection: /getMovie/:year/:genre <br /><br />
-
- 	addmovie genres: /addMovieGenres <br /><br />
- 	get movie genres: /getMovieGenres <br /><br />
- 	get movie link: /getMovieLink/:title <br /><br />
+ 	<p><span class="route">Get Movie Genres:</span> /getMovieGenres </p>
+ 	<p><span class="route">Get Movie Amazon Link:</span> /getMovieLink/:title </p>
+  </div> 
 
   </body>
 </html>

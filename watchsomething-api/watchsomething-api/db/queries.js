@@ -42,7 +42,7 @@ function addMovies(req, res, next) {
 
 
 
-for ( let i = 2014; i <= 2017; i +=1 ) {
+for ( let i = 1980; i <= 2017; i +=1 ) {
 	/* I want the genre variable defined in add movie genres available in here */
 	/* HARD CODED GENRE IDS*/
 	let arr = [28,12,35,80,99,10751,16,18,14,36,27,10402,9648,10749,878,10770,53,10752,37]
@@ -133,6 +133,14 @@ function getUserSelect(req, res, next){
 			  console.log(err);
 			});
 		}
+	function deleteMovie(req, res, next) {
+		let movieID = parseInt(req.params.ID)
+		db.result('DELETE FROM movies WHERE id =' + movieID)
+		.then((result) => { res.status(200).json({ status: "movie deleted" }); })
+      	.catch((err) => { return next(err); });
+
+	
+	}
 
 module.exports = {
 	addMovies: addMovies,
@@ -141,7 +149,8 @@ module.exports = {
 	addMovieGenres: addMovieGenres,
 	getMovieGenres: getMovieGenres,
 	getUserSelect: getUserSelect,
-	getMovieLink: getMovieLink
+	getMovieLink: getMovieLink,
+	deleteMovie: deleteMovie
 }
 
 
