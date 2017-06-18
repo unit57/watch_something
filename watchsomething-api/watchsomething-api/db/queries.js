@@ -11,9 +11,9 @@ var cheerio = require('cheerio');
 var amazon = require('amazon-product-api');
 /* Create Client */
 var client = amazon.createClient({
-  awsId: "AKIAIFALS5TTB5AGKMYQ",
-  awsSecret: "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",
-  awsTag: "unit57-20"
+  awsId: process.env.AWSID,
+  awsSecret: process.env.AWS_SECRET,
+  awsTag: process.env.AWSTAG 
 });
 
 // SET UP THE DATABASE
@@ -51,7 +51,7 @@ for ( let i = 1980; i <= 2017; i +=1 ) {
 	let year = i;
 	let genreID = arr[z];	
 	// let genreID = genreRES[z].genre_id;	
-	const tmdbaseURL = `https://api.themoviedb.org/3/discover/movie?api_key=c164eb6c6f7dce7530f80aea43fe7bb8&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=${year}&with_genres=${genreID}`
+	const tmdbaseURL = `https://api.themoviedb.org/3/discover/movie?api_key=${ process.env.TMDB_KEY }&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=${year}&with_genres=${genreID}`
 	axios.get(tmdbaseURL)
 		.then((res) => {
 			// console.log(res.data.results)
