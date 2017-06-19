@@ -4,28 +4,32 @@ var pgp = require('pg-promise')(options);
 
 //console.log(xmltest)
 
+// SET UP THE DATABASE
+var connectionString = process.env.DATABASE_URL;
+var db = pgp(connectionString);
+
 /* Cheerio */
 var cheerio = require('cheerio');
 
 /* AMAZON API */
 var amazon = require('amazon-product-api');
-/* Create Client */
+/* Create AMAZON Client */
 var client = amazon.createClient({
   awsId: process.env.AWSID,
   awsSecret: process.env.AWS_SECRET,
   awsTag: process.env.AWSTAG 
 });
 
-// SET UP THE DATABASE
-var connectionString = process.env.DATABASE_URL;
-var db = pgp(connectionString);
-
 // AXIOS
 let axios = require('axios');
 
 /* GENRE ARR TO USE IN ADD MOVIES */
 
+/* Was attempting a closure in the get genre method */
 let catchGenre = [];
+
+
+
 
 
 /* GET ALL MOVIES */
@@ -35,12 +39,10 @@ function getAllMovies(req, res, next) {
 	  .then((data) => { res.status(200).json({ AllMovies: data}); })
 	  .catch((err) => { return next(err); });
 }
-
-
+/* top movies: for each year loop through each genre and insert in to db  */
+/* Year loop will have to be refactored into a set iterval or set time out inorder to avoid rate limits */
 function addMovies(req, res, next) {
 	/* HOW TO GET MOVIE GENRE OBJECT IN THIS FUNCTION TO USE IN SECOND PART OF LOOP???*/
-
-
 
 for ( let i = 1980; i <= 2017; i +=1 ) {
 	/* I want the genre variable defined in add movie genres available in here */
@@ -100,12 +102,16 @@ function getOneMovie(req,res,next) {
 function getUserSelect(req, res, next){
 	let genreID = parseInt(req.params.genre);
 	let year = parseInt(req.params.year);
+	/* This query was tricky but works - it's how I get a decade at a time */
 	db.any(`SELECT * FROM movies WHERE year>=${year} AND year<=${year + 10} AND genre_id_1=${genreID} OR year>=${year} AND year<=${year + 10} AND genre_id_2=${genreID} OR year>=${year} AND year<=${year + 10} AND genre_id_3=${genreID}`)
 	
 	.then((data) => { res.status(200).json({ userSelect: data}) })
 	.catch((err) => { return next(err); });
 }
+
+/* Send in a title and get a responce from amazon with the Amazon Video Movie Link */
  function getMovieLink(req, res, next) {
+	/* This was getting XML data and parsing it */
 	/*amzURL = "http://webservices.amazon.com/onca/xml?AWSAccessKeyId=AKIAIFALS5TTB5AGKMYQ&AssociateTag=unit57-20&Keywords=back%20to%20the%20future&Operation=ItemSearch&ResponseGroup=Images%2CItemAttributes%2COffers&SearchIndex=Movies&Service=AWSECommerceService&Timestamp=2017-06-15T20%3A57%3A36.000Z&Signature=w9ouKnHYxea%2FznGV%2BUp57QBiGSS9AaFJRHeqfStO6Gk%3D"
  	 //amzURL = "http://localhost:3000/myxml"
  	axios.get(amzURL)
@@ -119,6 +125,8 @@ function getUserSelect(req, res, next){
 		.then((movieURL) => { res.json({ things: movieURL }) })
 		.catch((err) => { return next(err); });
 		*/
+		/* the follwiging gets the movie title sent in apends it to an amazon produnt search using the npm amazon product api*/
+		/* This package allows you to under in the amazon credentials as well and render a response as a JSON object (sorry Patrick - but I did learn so much about XML!) */
 		let title = req.params.title
 		client.itemSearch({
 			  keywords: title,
@@ -133,6 +141,7 @@ function getUserSelect(req, res, next){
 			  console.log(err);
 			});
 		}
+		/* This doesn't work, I get a 404, but I tested this route with a get and console long so I know it must be in the function */
 	function deleteMovie(req, res, next) {
 		let movieID = parseInt(req.params.ID)
 		db.result('DELETE FROM movies WHERE id =' + movieID)

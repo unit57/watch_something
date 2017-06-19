@@ -31,6 +31,7 @@ router.get('/getMovieLink/:title', db.getMovieLink);
 router.get('/myxml', function(req, res, next) {
 	res.sendFile(path.join(__dirname, '../', 'tester.xml'));
 });*/
+
 /* DELETE MOVIE */
 router.delete('/deleteMovie/:ID', db.deleteMovie);
 
