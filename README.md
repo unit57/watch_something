@@ -44,7 +44,7 @@ Delete a movie from the Watch Something API based on id
 ### Wireframes and ERD's
 
 ![Watch Somtething](https://i.imgur.com/wujRn0d.jpg)
-![Watch Somtething](https://i.imgur.com/RGh5tIP.jpg)
+![Watch Somtething](https://i.imgur.com/IZAYKP5.jpg)
 ![Get and Render Amazon Data](https://i.imgur.com/eda4vbw.jpg)
 ![React State](https://i.imgur.com/IZAYKP5.jpg)
 ### User Stories
