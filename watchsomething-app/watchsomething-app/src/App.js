@@ -19,11 +19,17 @@ class App extends Component {
 		super(props);
 
 		this.state = {
+			/* The 3 movies that will come form the user selection */
 			threeMovies: [],
+			/* The one movie selected by the user, this will be used to rened the selected movie page component */
 			selectedMovie: [],
+			/* The Selected movie is the movie result that is returned from the amazon query and is used in the link to amazon */
 			amazonMovie:[],
+			/* When true search buttons appear when flase, the don't and watch something else appears */
 			searchButtons: true,
+			/* toggles about button and home button on bottom of screen */
 			aboutButton: true,
+			/* Background image set as a state because I wanted it ti dissapear but only happened after second click */
 			bgImageURL: 'url("http://i.imgur.com/QZI3Mz7.png")'
 		}
 
@@ -45,7 +51,7 @@ class App extends Component {
 		    return Math.random() - 0.5;
 		}
 
-		console.log('this', `https://ericproject4wsapi.herokuapp.com/getmovie/${selectedYear}/${selectedGenre}`)
+		// console.log('this', `https://ericproject4wsapi.herokuapp.com/getmovie/${selectedYear}/${selectedGenre}`)
 
 		/* hard code url, but I'll need to get params for search from options  and link to heroku address*/
 		axios.get(`https://ericproject4wsapi.herokuapp.com/getmovie/${selectedYear}/${selectedGenre}`)
@@ -61,7 +67,8 @@ class App extends Component {
 	}
 	/* SELECT MOVIES CLICK */
 	handleSelectMovieClick(index) {
-		
+		/* index is passed back up to set the state of selected movie referencing the state of 3 selected movies it takes the title calls 
+		amazon and that res sets the state of amazon movie which is passed into selected movie component */
 		this.setState({
 			selectedMovie: this.state.threeMovies[index]
 		})
@@ -72,7 +79,7 @@ class App extends Component {
 				searchButtons: false,
 			})
 
-			console.log(res.data.things[0])
+			/*console.log(res.data.things[0])*/
 		})
 	}
 	/* BACK BUTTON CLICK */
@@ -106,6 +113,7 @@ class App extends Component {
 			)
 		};
 	/* Selected movie to selected movie component */
+	/* This is how I wanted to cut off the route to this component when the was no response data, but It doesn't work */
 	selectedMoviePageComponent = () => {
 		if(this.state.amazonMovie !== [] ){
 
@@ -118,7 +126,7 @@ class App extends Component {
 				)
 		};
 	
-	/* SEARCH BUTTONS*/
+	/* SEARCH BUTTONS toggle Watch Something Else*/
 	renderNavComponent = () => {
 		if(this.state.searchButtons === true){
 			return (
@@ -149,8 +157,6 @@ class App extends Component {
       <div className="App">
          <Title />
          {/*<Nav selectThree={(genre, year)=>this.handleThreeMovieClick(genre, year)} searchButtons={this.state.searchButtons}/>*/}
-	     
-
 	       <Router>
 	           <div>
 	         	 {this.renderNavComponent()} 

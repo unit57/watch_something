@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
+/* commented out data was excessive but I left in as reference */
 
+/* this componet renders the movie poster image and anchors it so it is the link to the selected movie component */
 class Movie extends Component {
   render() {
     return (

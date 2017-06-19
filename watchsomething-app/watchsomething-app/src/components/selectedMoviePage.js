@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+/* render the user selected movie  along with a link to Amazon Video */
 class selectedMoviePage extends Component {
   render() {
     return (

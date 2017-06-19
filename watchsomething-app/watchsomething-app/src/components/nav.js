@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
-
+/* Use Refs to grab the selected genre and decade */
+/* Some options are commmented out because they have strange results and I can't take the time to filter them manually right now, but they work */
 class Nav extends Component {
   render() {
     return (
@@ -16,7 +17,7 @@ class Nav extends Component {
               <option value="16"> an Animation </option>
               <option value="878"> a SciFi Movie  </option>
               {/*<option value="99"> a Documentary </option>*/}
-              <option value="10749"> a Romance Movie </option>
+              {/*<option value="10749"> a Romance Movie </option>*/}
               <option value="35"> a Comedy </option>
               <option value="10752"> a War Movie  </option>
               <option value="36"> a History Movie </option>

@@ -10,7 +10,7 @@ class About extends Component {
 	      	<p id="answer">That's where Watch Something comes in.</p>
 	      	<br />
 	      	<p id="howItWorks">Select the decade and genre you want to watch and Watch Something will find you three movies to choose from. 
-	      	Hit search again for more!
+	      	Hit search again for more.
 	      	<br />
 	      	<br />
 	      	If your selection is available on Prime, Rental or Digital purchase you can watch right now. Otherwise, you can order a copy and watch later.
