@@ -1,7 +1,8 @@
 # Watch Something
 
-
+![Screen Shot](http://i.imgur.com/ehgkayt.png)
 ![Wire Frame](https://i.imgur.com/nQ9b8rW.jpg)
+
 
 You know when you want to watch something and you kind of know what you want to watch, but you don't really know what you what to watch?
 That's where Watch Something comes in.
@@ -30,13 +31,11 @@ Find user selected movie on Amazon
 * Node
 * React
 * Postgress 
-* Sequalize
-* Amazon Product API 
 * CheerioJS
 * npm amazon-product-api 
 * Blue Bird
 * Axios
- 
+* dotENV
 ### CRUD functionality
 Create Entries in Watch Something API from The Movie Database API
 Read Watch Something API data in the Watch Something App
@@ -54,15 +53,29 @@ Delete a movie from the Watch Something API based on id
 4. Then I want to be linked to Amazon Video to watch it.
 
 ### Download and Install
+This project requires NodeJS and Postgress to be installed 
+Before downloading please obtain an API key from The Movie DB as well as a key, secret key and AWS tag for the Amazon Product API (links are at the beginning of this document).
+
+Fork and git clone this project
+
+npm install 
+
+Seed a database using schema.sql located in models folder
+
+Replace process.env text with associated api keys an credentials or create a .env file and link to keys there.
+
+npm start on both App and API
+
+By default the Watch Something App is linked to the web hosted Watch Something API - change that to the local port WatchSomething API is running.
+
 
 
 ## POST MVP
-Add users to the front end where they can Create, Read and Delete a watch list.
-Add Users to the API so I can have a admin account for accessing the database through the browser.
 * iframes ( modal to Amazon when user selects a movie to watch )
 * ThreeJS
 * React Native 
-* Host app on AWS ( if that's not a crazy decision )
+
+## 
 
 
 
