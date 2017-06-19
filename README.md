@@ -1,6 +1,6 @@
 # Watch Something
 
-![Screen Shot](http://i.imgur.com/ehgkayt.png)
+![Screen Shot](https://i.imgur.com/ehgkayt.png)
 ![Wire Frame](https://i.imgur.com/nQ9b8rW.jpg)
 
 
