@@ -27,46 +27,50 @@ Show 3 movie results based on a users query.
 Find user selected movie on Amazon
 
 ### Tech
-* Express
-* Node
-* React
-* Postgress 
-* CheerioJS
-* npm amazon-product-api 
+* Express - Server side development
+* Node - Server side development
+* React - front end
+* Postgress - data base
+* pg-promise - this and Blue Bird make the local database accessable to Node
 * Blue Bird
-* Axios
-* dotENV
+* CheerioJS - parse XML data with JQuery syntax
+* npm amazon-product-api - run queries to the Amazon Product API from Node
+* Axios - send request to API's
+* dotENV -  store API keys
 ### CRUD functionality
 Create Entries in Watch Something API from The Movie Database API
 Read Watch Something API data in the Watch Something App
 Delete a movie from the Watch Something API based on id
 ### Wireframes and ERD's
-
 ![Watch Somtething](https://i.imgur.com/wujRn0d.jpg)
 ![Watch Something](https://i.imgur.com/RGh5tIP.jpg)
 ![Get and Render Amazon Data](https://i.imgur.com/eda4vbw.jpg)
 ![React State](https://i.imgur.com/IZAYKP5.jpg)
 ### User Stories
-1. As a user I want to be presented with three choices of movies to watch when I don't know what I want to watch.
-2. Then, I want be able to select the type's of movies I want to be presented with by selecting a genre and year. 
-3. When I select the movie that I want to watch, I want to see the movie details 
-4. Then I want to be linked to Amazon Video to watch it.
+The users of this app are some what indecisive people. They have pretty much their go to movie taste, but can never think of what to watch. They would be so happy to be remined of a movie they have always meant to watch but have forgotten about or be reminded of an old favorite. While tastes varies, the option to choose your genre means that no matter what a user is into, they can find something to watch.
+
+1. As a user I want to be presented with three choices of movies to watch when I don't know what I want to watch based on my genre preference and decade of choice.
+2. When I select the movie that I want to watch, I want to see the movie details 
+3. Then I want to be linked to Amazon Video to watch it.
+
+### Aproach
+After deciding on the project Idea I skeched a wireframe
 
 ### Download and Install
 This project requires NodeJS and Postgress to be installed 
 Before downloading please obtain an API key from The Movie DB as well as a key, secret key and AWS tag for the Amazon Product API (links are at the beginning of this document).
 
-Fork and git clone this project
+Fork and git clone this project.
 
-npm install 
+npm install. 
 
-Seed a database using schema.sql located in models folder
+Seed a database using schema.sql located in models folder.
 
-Replace process.env text with associated api keys an credentials or create a .env file and link to keys there.
+Replace process.env text with associated api keys and credentials or create a .env file and link to keys there.
 
-npm start on both App and API
+npm start on both App and API.
 
-By default the Watch Something App is linked to the web hosted Watch Something API - change that to the local port WatchSomething API is running.
+By default the Watch Something App is linked to the web hosted Watch Something API - change that to the local port Watch Something API is running.
 
 
 
