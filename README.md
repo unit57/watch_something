@@ -60,18 +60,20 @@ After that I sketched how my app, The Movie Database API and Amazon would intera
 
 I first created the Watch Something api and hit a rate limit issue while grabbing the data from the Movie database. Unfortunately right now I have to manually change the loop selecting the years I want to pull in. The only other solution is to refactor my for loop into a setinterval to make my request at a slower pace. Given more time I would have refactored that - but will have to do so at a later time.
 
-After testng my request in postman I created a front end in react that renders the data recieved. Some tricky parts included selecting 3 random objects out of an array, parsing xml data returned by Amazon creating the route and query that grabbed the movie in a range of 10 years and setting the states for different buttons appearing dependingon what actions the user takes. 
+After testng my request in postman I created a front end in react that renders the data recieved. Some tricky parts included selecting 3 random objects out of an array, parsing xml data returned by Amazon, creating the query that grabbed the movie in a range of 10 years and setting the states for different buttons appearing depending on what actions the user takes. 
 
-I whiteboarded and psuedo coded much of the difficult to conscptualize parts of the code, much of that is linked above and also did a little user testing.
+I whiteboarded and psuedo coded much of the difficult to conceptualize parts of the code, much of that is linked above and also did a little user testing.
 
 ## Unsolved Problems
 Overcoming the rate limit of external API
 Creating a closure on the get genre method that would make the genres accessable to another method.
 Closing off the watch me route when there is no data there. I tried setting a state that mad it accessable when a movie was selected, but then I had to click the movie twice to go down that route.
 
-Movies that have'/' in their titles dont render
+Movies that have'/' in their titles don't render.
 
-Maany movies that are not on amazon video appear and I would like a to better control or 
+Many movies that are not on Amazon video appear and I would like a to better control of what movies are rendered. Probably a back end interface where I can have full functionality.
+
+I don't have much control over which movie gets rendered when different movies have the same name. I have to see if I can add a year paramater to the Amazon Video link query.
 
 ### Download and Install
 This project requires NodeJS and Postgress to be installed 
@@ -99,7 +101,7 @@ run the get movies route( for now its best to manualy set the for loop to 2-3 ye
 * iframes ( modal to Amazon when user selects a movie to watch )
 * ThreeJS
 * React Native 
-
+* Back end full CRUD funtionality with admin controls and a GUI to manipulate data.
 ## 
 
 
