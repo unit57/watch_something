@@ -1,7 +1,7 @@
 # Watch Something
 
 
-![Wire Frame](http://i.imgur.com/nQ9b8rW.jpg)
+![Wire Frame](https://i.imgur.com/nQ9b8rW.jpg)
 
 You know when you want to watch something and you kind of know what you want to watch, but you don't really know what you what to watch?
 That's where Watch Something comes in.
@@ -45,8 +45,8 @@ Delete a movie from the Watch Something API based on id
 
 ![Watch Somtething](https://i.imgur.com/wujRn0d.jpg)
 ![Watch Somtething](https://i.imgur.com/RGh5tIP.jpg)
-![Get and Render Amazon Data](http://i.imgur.com/eda4vbw.jpg)
-![React State](http://i.imgur.com/IZAYKP5.jpg)
+![Get and Render Amazon Data](https://i.imgur.com/eda4vbw.jpg)
+![React State](https://i.imgur.com/IZAYKP5.jpg)
 ### User Stories
 1. As a user I want to be presented with three choices of movies to watch when I don't know what I want to watch.
 2. Then, I want be able to select the type's of movies I want to be presented with by selecting a genre and year. 
