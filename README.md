@@ -54,7 +54,24 @@ The users of this app are some what indecisive people. They have pretty much the
 3. Then I want to be linked to Amazon Video to watch it.
 
 ### Aproach
-After deciding on the project Idea I skeched a wireframe
+After deciding on the project idea I skeched a wireframe of how a user could make their movie query, how those results would be rendered and how it would look when they selected a movie. I tested the Amazon Product API and knew that I could in theory get back a link to the movie I wanted. Doing that would mean that a user could watch their choice immediatly on Amazon Video. 
+
+After that I sketched how my app, The Movie Database API and Amazon would interact. I quickly relaized that I could not query the Movie database however I liked, so I had to make my own api that will be seeded by The Movie Database and my app would take to my API disrectly. It is also there where I needed to send back a movie title to hit the Amazon API render back the Amazon video link.
+
+I first created the Watch Something api and hit a rate limit issue while grabbing the data from the Movie database. Unfortunately right now I have to manually change the loop selecting the years I want to pull in. The only other solution is to refactor my for loop into a setinterval to make my request at a slower pace. Given more time I would have refactored that - but will have to do so at a later time.
+
+After testng my request in postman I created a front end in react that renders the data recieved. Some tricky parts included selecting 3 random objects out of an array, parsing xml data returned by Amazon creating the route and query that grabbed the movie in a range of 10 years and setting the states for different buttons appearing dependingon what actions the user takes. 
+
+I whiteboarded and psuedo coded much of the difficult to conscptualize parts of the code, much of that is linked above and also did a little user testing.
+
+## Unsolved Problems
+Overcoming the rate limit of external API
+Creating a closure on the get genre method that would make the genres accessable to another method.
+Closing off the watch me route when there is no data there. I tried setting a state that mad it accessable when a movie was selected, but then I had to click the movie twice to go down that route.
+
+Movies that have'/' in their titles dont render
+
+Maany movies that are not on amazon video appear and I would like a to better control or 
 
 ### Download and Install
 This project requires NodeJS and Postgress to be installed 
@@ -71,6 +88,10 @@ Replace process.env text with associated api keys and credentials or create a .e
 npm start on both App and API.
 
 By default the Watch Something App is linked to the web hosted Watch Something API - change that to the local port Watch Something API is running.
+
+run the get genres route.
+
+run the get movies route( for now its best to manualy set the for loop to 2-3 year limits to pull in data or else you'll max out your ratelimit and retrieve very few movies)
 
 
 
