@@ -11,7 +11,7 @@ span {
   font-size: 20px
 }
 body {
-  background-color: #0b0c10;
+  background-color:#010c0b;
 }
 a{
   
@@ -28,7 +28,7 @@ a{
   height:375px;
   border:solid rgba(69, 162, 152, 1) 1px;
   
-  background-color:#0b0c10;
+  background-color:#010c0b;
 }
 /* TITLE COMPONENT */
 .title h2{
@@ -63,7 +63,9 @@ nav {
 }
 .movieButton {
   background-color: #66fcf1;
-
+}
+.optionColor {
+  color: black!important;
 }
 
 
@@ -73,7 +75,7 @@ nav {
   background-repeat:no-repeat;
   background-size:50%;
   background-position:center;
-  overflow:scroll;
+  /*overflow:scroll;*/
   width:75%;
   margin:0 auto;
   background-color: #000000
@@ -125,7 +127,6 @@ nav {
   color:#66fcf1;
   text-align:center;
   margin-bottom: 8px;
-
 }
 #watchme {
   color:#66fcf1;
@@ -140,12 +141,10 @@ nav {
   justify-content: space-between;
   padding:25px 140px 0 140px;
   margin-top: 20px;
- 
-
 }
 #selectedMoviePosterDiv{
   height:280px;
-  width:200px;
+  min-width:200px;
 
   margin-right:10px;
 }
@@ -155,8 +154,10 @@ nav {
   border:solid #66fcf1 3px;
   
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
-  transition: .3s;
-  
+  transition: .3s; 
+}
+#renderedOverview{
+  overflow-x: hidden!important;
 }
 #amazonResultsDiv {
   width:200px;
@@ -222,21 +223,44 @@ nav {
 }
 
 /* MEDIA QUERY */
-@media screen and (max-width:880px) {
-  body{
-    /*background:red;*/
+@media screen and (max-width:830px) {
+
+  #renderMovieComponent {
+    min-width:200px;
+    margin: 0 10px 0 10px;
+    transition: .8s
+  }
+  #movieResults {
+   /* display:flex;*/
+    overflow-x: scroll;
+    height:100%;
+    padding-left: 20px;
+    padding-right: 20px;
+   
+  }
+  .imageContainer {
+  padding-right: 20px;
   }
   #movieAndDescription {
     flex-direction: column;
-    justify-content: flex-start;
-
-  }
-  .tempBorder {
-    
+    height:600px;
   }
   .selectedMoviePage {
     min-width:500px;
-    height:750px;
+    max-height:700px;
+  }
+
+  }
+
+/* MEDIA QUERY */
+@media screen and (max-width:880px) {
+
+  .selectedMoviePage {
+    min-width:500px;
+    height:850px;
+  }
+  .tempBorder {
+    margin-top: 15px;
   }
   #selectedMovieDetails {
     width:300px;
@@ -276,9 +300,6 @@ nav {
     width:350px;
    /* height:1000px;*/
   }
-  #movieResults {
-    flex-direction: column;
-  }
   .selectedMoviePage {
     min-width:350px;
     height:750px;
@@ -295,11 +316,10 @@ nav {
   #movieAndDescription {
     padding-left: 7% ;
   }
-  .movieContainerComponent {
-   height:1000px;
-  }
+
   .button {
     margin-bottom:50px;
   }
   }
+
 

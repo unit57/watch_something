@@ -10,13 +10,12 @@ class About extends Component {
 	      	<p id="answer">That's where Watch Something comes in.</p>
 	      	<br />
 	      	<p id="howItWorks">Select the decade and genre you want to watch and Watch Something will find you three movies to choose from. 
-	      	Hit search again for more.
 	      	<br />
 	      	<br />
 	      	If your selection is available on Prime, Rental or Digital purchase you can watch right now. Otherwise, you can order a copy and watch later.
 	      	<br />
 	      	<br />
-	      	<p id="finePrint">Watch Something is powered by <a target="_blank" href="https://affiliate-program.amazon.com/gp/advertising/api/detail/main.html">Amazon's Product Advertising API</a>, <a target="_blank" href="https://www.themoviedb.org/documentation/api">The Movie Database API</a> and <a target="_blank" href="#"> Watch Something API</a>.</p>
+	      	<p id="finePrint">Watch Something is powered by <a target="_blank" rel="noopener noreferrer" href="https://affiliate-program.amazon.com/gp/advertising/api/detail/main.html">Amazon's Product Advertising API</a>, <a target="_blank" rel="noopener noreferrer" href="https://www.themoviedb.org/documentation/api">The Movie Database API</a> and <a target="_blank" rel="noopener noreferrer" href="https://ericproject4wsapi.herokuapp.com "> Watch Something API</a>.</p>
 	      	</p>
 	      	</div>
 	      

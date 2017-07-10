@@ -9,7 +9,7 @@ import Nav from "./components/nav"
 import MovieChoices from "./components/movieChoices"
 import SelectedMoviePage from "./components/selectedMoviePage"
 import About from "./components/about"
-import Footer from "./components/footer"
+
 
 
 
@@ -30,7 +30,9 @@ class App extends Component {
 			/* toggles about button and home button on bottom of screen */
 			aboutButton: true,
 			/* Background image set as a state because I wanted it ti dissapear but only happened after second click */
-			bgImageURL: 'url("http://i.imgur.com/QZI3Mz7.png")'
+			bgImageURL: 'url("http://i.imgur.com/QZI3Mz7.png")',
+			/* Search toggle search again */
+			search: "Search"
 		}
 
 		// bind
@@ -41,10 +43,10 @@ class App extends Component {
 
 
 
-/* Get 3 movies and pass 3 movie click to nav */
+	/* Get 3 movies and pass 3 movie click to nav */
 	handleThreeMovieClick(genre, year) {
-		let selectedGenre = parseInt(genre.value);
-		let selectedYear = parseInt(year.value);
+		let selectedGenre = parseInt(genre.value,10);
+		let selectedYear = parseInt(year.value,10);
 		// console.log(typeof(selectedYear), selectedGenre)
 		//randomize function use with data to mix up data
 		function randomize(a, b) {
@@ -60,7 +62,8 @@ class App extends Component {
 			let movieSplit = res.data.userSelect.sort(randomize).splice(length-3, 3)
 			this.setState({
 				threeMovies: movieSplit,
-				aboutButton:true
+				aboutButton:true,
+				search:"Search Again!"
 				
 			})
 		})
@@ -72,7 +75,13 @@ class App extends Component {
 		this.setState({
 			selectedMovie: this.state.threeMovies[index]
 		})
-		axios.get(`https://ericproject4wsapi.herokuapp.com/getMovieLink/${this.state.threeMovies[index].title}`)
+		/* remove '/' from movie titles */
+		let ogtitle = this.state.threeMovies[index].title
+		let remove = ogtitle.split('/')
+		let newTitle = remove.join(' ')
+		/* ADD YEAR TO QUERY - Will have to test accepting year param on express route */
+		/*let year = this.state.threeMovies[index].year;*/
+		axios.get(`https://ericproject4wsapi.herokuapp.com/getMovieLink/${newTitle}`)
 		.then((res) => {
 			this.setState({
 				amazonMovie: res.data.things[0],
@@ -90,14 +99,14 @@ class App extends Component {
 	 	})
 	 	
 	 }
-
+	 /* ABOUT BUTTON CLICK */
 	 handleAboutClick() {
 	 	this.setState({
 	 		aboutButton: false
 	 	})
 
 	 }
-
+	 /* HOME BUTTON CLICK */
 	 handleHomeClick() {
 	 	this.setState({
 	 		aboutButton: true
@@ -130,7 +139,7 @@ class App extends Component {
 	renderNavComponent = () => {
 		if(this.state.searchButtons === true){
 			return (
-				<Nav selectThree={(genre, year)=>this.handleThreeMovieClick(genre, year)} searchButtons={this.state.searchButtons}/>
+				<Nav selectThree={(genre, year)=>this.handleThreeMovieClick(genre, year)} searchButtons={this.state.searchButtons} search={this.state.search}/>
 				)
 		}else{
 			return (
